@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:13:06 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/03/19 12:30:03 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/03/19 14:47:02 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <pwd.h>
 # include <grp.h>
 # include "libft/libft.h"
+# include <limits.h>
 
 typedef	struct	s_dir
 {
