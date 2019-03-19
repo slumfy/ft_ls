@@ -6,11 +6,21 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/03/19 15:01:51 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:53:23 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+ * 1: fonction pour check et set les options
+ * 2: fonction pour creer la list
+ * 3: gestion des options
+ * 4: fonctions d'affichage
+ * 5: fonctions gestions d'erreur suivant les retours des fonctions precedantes
+ */
+
+
 
 int		main(int ac, char **av)
 {
