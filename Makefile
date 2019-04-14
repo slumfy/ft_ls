@@ -6,12 +6,13 @@
 #    By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 12:10:29 by rvalenti          #+#    #+#              #
-#    Updated: 2019/03/19 13:19:25 by rvalenti         ###   ########.fr        #
+#    Updated: 2019/04/14 21:26:38 by rvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_ls
-SRC =	ft_ls.c
+SRC =	ft_ls.c\
+		utils.c
 
 LIBFT = ./libft/
 CC = gcc -Wall -Werror -Wextra -fsanitize=address -g

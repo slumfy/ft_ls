@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:13:06 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/03/19 15:43:49 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/14 21:46:45 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,25 @@
 #define OPT_t 16
 
 
-typedef	struct	s_dir
+typedef struct		s_file
 {
-	DIR             *curdir;
 	struct dirent   *dp;
 	struct stat     sb;
 	struct passwd   *pass;
 	struct group    *grp;
+	struct s_file	*next;
+}					t_file;
+
+
+typedef	struct		s_dir
+{
+	DIR             *curdir;
+	t_file			*list;
 }					t_dir;
 
+void		ft_ls(t_dir *data, char *path);
 
+void		ft_list_pushback(t_file **begin_list, struct dirent *dp);
+t_file		*ft_create_elem(struct dirent *dp);
+void		print_list(t_file *list);
 #endif
