@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/14 21:47:53 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/14 21:51:18 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int		main(int ac, char **av)
 	path[len] = '/';
 	path[len + 1] = '\0';
 	len = strlen(path);
-	printf ("\npath=%s\n", path);
+	printf ("path=%s\n", path);
 	ft_ls(&data, path);
 	return (0);
 }
