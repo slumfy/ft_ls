@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 00:47:38 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 00:56:49 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,31 +76,3 @@ void ft_ls(t_data *data)
 	closedir(data->dir.curdir);
 
 	}
-
-
-
-int		main(int ac, char **av)
-{
-	t_data			data;
-	int				len;
-
-	ft_memset(&data, 0, sizeof(t_dir));
-	if (ac < 2)
-	{
-		data.dir.curdir = opendir(".");
-		strcat(data.dir.path, ".");
-	}
-	else
-	{
-		data.dir.curdir = opendir(av[1]);
-		strcat(data.dir.path, av[1]);
-	}
-	len = strlen(data.dir.path);
-	data.dir.path[len] = '/';
-	data.dir.path[len + 1] = '\0';
-	len = strlen(data.dir.path);
-	printf ("path=%s\n", data.dir.path);
-	ft_ls(&data);
-	free_list(data.list);
-	return (0);
-}
