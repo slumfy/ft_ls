@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/14 21:07:00 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/15 05:00:33 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/15 22:07:32 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,16 @@ int		list_size(t_file *list)
 	return (n);
 }
 
-void	print_list(t_file *list)
+void	free_list(t_file *list)
 {
 	t_file *tmp;
 
 	tmp = list;
-	printf("list:\n");
 	while (tmp)
 	{
-		if (tmp->dp->d_name[0] != '.')
-			printf("%s\t", tmp->dp->d_name);
 		tmp = tmp->next;
+		free(list);
+		list = tmp;
 	}
-	printf("\n");
+	list = NULL;
 }

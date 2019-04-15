@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/15 05:00:36 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/15 22:07:12 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void ft_ls(t_dir *data, char *path)
 	tmp = data->list;
 	while ((file = readdir(data->curdir)) != NULL)
 	{
+		printf("elem= %s\n", file->d_name);
 		ft_list_insert(&data->list, file);
 		(void)path;
 		//		stat(path, &data->list->sb);
@@ -102,5 +103,6 @@ int		main(int ac, char **av)
 	len = strlen(path);
 	printf ("path=%s\n", path);
 	ft_ls(&data, path);
+	free_list(data.list);
 	return (0);
 }
