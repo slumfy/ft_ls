@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:13:06 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 00:47:41 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 00:53:28 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct		s_file
 	struct passwd   *pass;
 	struct group    *grp;
 	struct s_file	*next;
+	char			path[PATH_MAX];
 }					t_file;
 
 
