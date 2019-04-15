@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:13:06 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/15 22:06:57 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 00:47:41 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,17 @@ typedef struct		s_file
 typedef	struct		s_dir
 {
 	DIR             *curdir;
-	t_file			*list;
+	char			path[PATH_MAX];
 }					t_dir;
 
-void		ft_ls(t_dir *data, char *path);
+typedef struct		s_data
+{
+	t_dir		dir;
+	t_file		*list;
+	t_file		*dir_list;
+}					t_data;
+
+void		ft_ls(t_data *data);
 
 void		ft_list_insert(t_file **begin_list, struct dirent *dp);
 void		ft_list_pushfront(t_file **begin_list, struct dirent *dp);

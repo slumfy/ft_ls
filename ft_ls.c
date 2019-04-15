@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/15 22:07:12 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 00:47:38 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * 5: fonctions gestions d'erreur suivant les retours des fonctions precedantes
  */
 
-void ft_ls(t_dir *data, char *path)
+void ft_ls(t_data *data)
 {
 	struct dirent	*file;
 	t_file			*tmp;
@@ -28,11 +28,10 @@ void ft_ls(t_dir *data, char *path)
 
 	len = 0;
 	tmp = data->list;
-	while ((file = readdir(data->curdir)) != NULL)
+	while ((file = readdir(data->dir.curdir)) != NULL)
 	{
 		printf("elem= %s\n", file->d_name);
 		ft_list_insert(&data->list, file);
-		(void)path;
 		//		stat(path, &data->list->sb);
 		//		data->list->pass = getpwuid(data->list->sb.st_uid);
 		//		data->list->grp = getgrgid(data->list->sb.st_gid);
@@ -74,7 +73,7 @@ void ft_ls(t_dir *data, char *path)
 		printf("Last file access:         %s", ctime(&data.sb.st_atime));
 		printf("Last file modification:   %s", ctime(&data.sb.st_mtime));
 		printf("\n");*/
-	closedir(data->curdir);
+	closedir(data->dir.curdir);
 
 	}
 
@@ -82,27 +81,26 @@ void ft_ls(t_dir *data, char *path)
 
 int		main(int ac, char **av)
 {
-	t_dir			data;
-	char			path[PATH_MAX];
+	t_data			data;
 	int				len;
 
 	ft_memset(&data, 0, sizeof(t_dir));
 	if (ac < 2)
 	{
-		data.curdir = opendir(".");
-		strcat(path, ".");
+		data.dir.curdir = opendir(".");
+		strcat(data.dir.path, ".");
 	}
 	else
 	{
-		data.curdir = opendir(av[1]);
-		strcat(path, av[1]);
+		data.dir.curdir = opendir(av[1]);
+		strcat(data.dir.path, av[1]);
 	}
-	len = strlen(path);
-	path[len] = '/';
-	path[len + 1] = '\0';
-	len = strlen(path);
-	printf ("path=%s\n", path);
-	ft_ls(&data, path);
+	len = strlen(data.dir.path);
+	data.dir.path[len] = '/';
+	data.dir.path[len + 1] = '\0';
+	len = strlen(data.dir.path);
+	printf ("path=%s\n", data.dir.path);
+	ft_ls(&data);
 	free_list(data.list);
 	return (0);
 }
