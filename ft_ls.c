@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/14 21:51:18 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/15 05:00:36 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,20 @@
 void ft_ls(t_dir *data, char *path)
 {
 	struct dirent	*file;
+	t_file			*tmp;
+	int len;
 
+	len = 0;
+	tmp = data->list;
 	while ((file = readdir(data->curdir)) != NULL)
 	{
-		ft_list_pushback(&data->list,file);
-		stat(path, &data->list->sb);
-		data->list->pass = getpwuid(data->list->sb.st_uid);
-		data->list->grp = getgrgid(data->list->sb.st_gid);
+		ft_list_insert(&data->list, file);
+		(void)path;
+		//		stat(path, &data->list->sb);
+		//		data->list->pass = getpwuid(data->list->sb.st_uid);
+		//		data->list->grp = getgrgid(data->list->sb.st_gid);
 	}
+	len = list_size(data->list);
 	print_list(data->list);
 	/*
 	 ** partie pour afficher les information des different fichier/dir/etc
