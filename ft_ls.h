@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:13:06 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 05:44:46 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 08:51:38 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		ft_list_pushfront(t_file **begin_list, struct dirent *dp, t_data *data);
 void		ft_list_pushback(t_file **begin_list, struct dirent *dp, t_data *data);
 t_file		*ft_create_elem(struct dirent *dp, t_data *data);
 void		free_list(t_file **list);
+void		deleteif_list(t_file **list, t_data *data);
 int			list_size(t_file *list);
 void		print_list(t_file *list);
 

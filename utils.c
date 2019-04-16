@@ -6,7 +6,7 @@
 /*   by: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2019/04/14 21:07:00 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 05:45:17 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 08:49:20 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_file	*ft_create_elem(struct dirent *dp, t_data *data)
 	ft_strclr(path_name);
 	ft_strcpy(path_name, data->dir.path);
 	ft_strcat(path_name, dp->d_name);
-	printf("pathelem= %s\n", path_name);
+	//	printf("pathelem= %s\n", path_name);
 	if (!(new = (t_file*)ft_memalloc(sizeof(t_file))))
 		return(NULL);
 	new->dp = dp;
@@ -114,11 +114,14 @@ void	free_list(t_file **begin_list)
 
 	tmp = *begin_list;
 	tmp2 = *begin_list;
-	while (tmp)
+	if (*begin_list == NULL)
 	{
-		tmp2 = tmp->next;
-		free(tmp);
-		tmp = tmp2;
+		while (tmp)
+		{
+			tmp2 = tmp->next;
+			free(tmp);
+			tmp = tmp2;
+		}
+		*begin_list = NULL;
 	}
-	*begin_list = NULL;
 }

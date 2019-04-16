@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 21:54:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 05:45:25 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 09:15:30 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void print_list(t_file *list)
 		if (tmp->dp->d_name[0] != '.')
 		{
 			printf("%s\n", tmp->dp->d_name);
-			if ((tmp->sb.st_mode & S_IFMT) == S_IFBLK)
+		/*	if ((tmp->sb.st_mode & S_IFMT) == S_IFBLK)
 				printf("block device\n");
 			else if ((tmp->sb.st_mode & S_IFMT) == S_IFCHR)
 				printf("character device\n");
@@ -38,7 +38,7 @@ void print_list(t_file *list)
 			else if ((tmp->sb.st_mode & S_IFMT) == S_IFSOCK)
 				printf("socket\n");
 			else
-				printf("unknown?\n");
+				printf("unknown?\n");*/
 		}
 		tmp = tmp->next;
 	}

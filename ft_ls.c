@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 05:46:21 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 09:12:26 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void ft_ls(t_data *data)
 	tmp = data->list;
 	while ((file = readdir(data->dir.curdir)) != NULL)
 	{
-//		printf("elem= %s\n", file->d_name);
+	//		printf("elem= %s\n", file->d_name);
 		ft_list_insert(&data->list, file, data);
-		//		data->list->pass = getpwuid(data->list->sb.st_uid);
-		//		data->list->grp = getgrgid(data->list->sb.st_gid);
 	}
 	len = list_size(data->list);
 	print_list(data->list);
+	deleteif_list(&data->list, data);
+	print_list(data->dir_list);
 	/*
 	 ** partie pour afficher les information des different fichier/dir/etc
 	 */
@@ -73,5 +73,4 @@ void ft_ls(t_data *data)
 		printf("Last file modification:   %s", ctime(&data.sb.st_mtime));
 		printf("\n");*/
 	closedir(data->dir.curdir);
-
 	}

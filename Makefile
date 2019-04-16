@@ -6,7 +6,7 @@
 #    By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 12:10:29 by rvalenti          #+#    #+#              #
-#    Updated: 2019/04/16 02:09:50 by rvalenti         ###   ########.fr        #
+#    Updated: 2019/04/16 08:48:08 by rvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = ft_ls
 SRC =	main.c\
 		ft_ls.c\
 		utils.c\
+		utils2.c\
 		print_list.c
 
 LIBFT = ./libft/
