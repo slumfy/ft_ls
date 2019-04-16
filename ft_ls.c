@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 01:54:24 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 05:46:21 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ void ft_ls(t_data *data)
 	tmp = data->list;
 	while ((file = readdir(data->dir.curdir)) != NULL)
 	{
-		printf("elem= %s\n", file->d_name);
+//		printf("elem= %s\n", file->d_name);
 		ft_list_insert(&data->list, file, data);
-		//		stat(path, &data->list->sb);
 		//		data->list->pass = getpwuid(data->list->sb.st_uid);
 		//		data->list->grp = getgrgid(data->list->sb.st_gid);
 	}

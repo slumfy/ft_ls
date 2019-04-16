@@ -6,7 +6,7 @@
 /*   by: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2019/04/14 21:07:00 by rvalenti          #+#    #+#             */
-/*   updated: 2019/04/16 02:08:46 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 05:45:17 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_file	*ft_create_elem(struct dirent *dp, t_data *data)
 	if (!(new = (t_file*)ft_memalloc(sizeof(t_file))))
 		return(NULL);
 	new->dp = dp;
-	stat(path_name, &data->list->sb);
+	stat(path_name, &new->sb);
 	new->pass = getpwuid(new->sb.st_uid);
 	new->grp = getgrgid(new->sb.st_gid);
 	new->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 21:54:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 05:27:41 by smoreno-         ###   ########.fr       */
+/*   Updated: 2019/04/16 05:45:25 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void print_list(t_file *list)
 			else
 				printf("unknown?\n");
 		}
-			printf("%s\n", tmp->dp->d_name);
 		tmp = tmp->next;
 	}
 	printf("\n");
