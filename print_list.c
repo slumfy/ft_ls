@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 21:54:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/15 21:55:09 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 02:43:40 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void    print_list(t_file *list)
 	while (tmp)
 	{
 		if (tmp->dp->d_name[0] != '.')
-			printf("%s\t", tmp->dp->d_name);
+			printf("%s\n", tmp->dp->d_name);
 		tmp = tmp->next;
 	}
 	printf("\n");
