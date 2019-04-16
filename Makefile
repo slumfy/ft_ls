@@ -6,7 +6,7 @@
 #    By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 12:10:29 by rvalenti          #+#    #+#              #
-#    Updated: 2019/04/16 00:56:16 by rvalenti         ###   ########.fr        #
+#    Updated: 2019/04/16 02:09:50 by rvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC =	main.c\
 
 LIBFT = ./libft/
 CC = gcc -Wall -Werror -Wextra -fsanitize=address -g
+
 INCLUDES = ./
 OBJ = $(SRC:.c=.o)
 
