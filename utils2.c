@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 08:40:24 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 09:35:13 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/16 11:24:07 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,20 @@
 
 /*a FaiRE EN MIEUX*/
 
+void	insert_back(t_file *file, t_file **dst)
+{
+	t_file *tmp;
+
+	tmp = *dst;
+	if (*dst != NULL)
+	{
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = file;
+	}
+	else
+		*dst = file;
+}
 
 void	deleteif_list(t_file **list, t_data *data)
 {
@@ -24,21 +38,16 @@ void	deleteif_list(t_file **list, t_data *data)
 	prev = *list;
 	while (cur)
 	{
-		if ((cur->sb.st_mode & S_IFMT) == S_IFDIR && cur->dp->d_name[0] != '.')
-			break ;
-		cur = cur->next;
-	}
-	while(prev->next != cur)
-		prev = prev->next;
-	while (cur)
-	{
+	printf("test %s\n", cur->dp->d_name);
 		if ((cur->sb.st_mode & S_IFMT) == S_IFDIR && cur->dp->d_name[0] != '.')
 		{
 			prev->next = cur->next;
-			data->dir_list = cur;
 			cur->next = NULL;
+			insert_back(cur, &data->dir_list);
+			cur = prev;
 		}
-		prev = prev->next;
+		if (prev != cur)
+			prev = prev->next;
 		cur = cur->next;
 	}
 }
