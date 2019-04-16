@@ -22,6 +22,7 @@
 # include <grp.h>
 # include "libft/libft.h"
 # include <limits.h>
+# include <errno.h>
 
 #define OPT_l 1
 #define OPT_R 2
@@ -57,10 +58,10 @@ typedef struct		s_data
 
 void		ft_ls(t_data *data);
 
-void		ft_list_insert(t_file **begin_list, struct dirent *dp);
-void		ft_list_pushfront(t_file **begin_list, struct dirent *dp);
-void		ft_list_pushback(t_file **begin_list, struct dirent *dp);
-t_file		*ft_create_elem(struct dirent *dp);
+void		ft_list_insert(t_file **begin_list, struct dirent *dp, t_data *data);
+void		ft_list_pushfront(t_file **begin_list, struct dirent *dp, t_data *data);
+void		ft_list_pushback(t_file **begin_list, struct dirent *dp, t_data *data);
+t_file		*ft_create_elem(struct dirent *dp, t_data *data);
 void		free_list(t_file **list);
 int			list_size(t_file *list);
 void		print_list(t_file *list);

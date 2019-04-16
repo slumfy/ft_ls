@@ -31,7 +31,7 @@ void ft_ls(t_data *data)
 	while ((file = readdir(data->dir.curdir)) != NULL)
 	{
 		printf("elem= %s\n", file->d_name);
-		ft_list_insert(&data->list, file);
+		ft_list_insert(&data->list, file, data);
 		//		stat(path, &data->list->sb);
 		//		data->list->pass = getpwuid(data->list->sb.st_uid);
 		//		data->list->grp = getgrgid(data->list->sb.st_gid);

@@ -3,27 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   by: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/14 21:07:00 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 02:08:46 by rvalenti         ###   ########.fr       */
+/*   created: 2019/04/14 21:07:00 by rvalenti          #+#    #+#             */
+/*   updated: 2019/04/16 02:08:46 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-t_file	*ft_create_elem(struct dirent *dp)
+t_file	*ft_create_elem(struct dirent *dp, t_data *data)
 {
 	t_file	*new;
+	char	path_name[PATH_MAX];
 
+	ft_strclr(path_name);
+	ft_strcpy(path_name, data->dir.path);
+	ft_strcat(path_name, dp->d_name);
+	printf("pathelem= %s\n", path_name);
 	if (!(new = (t_file*)ft_memalloc(sizeof(t_file))))
 		return(NULL);
 	new->dp = dp;
+	stat(path_name, &data->list->sb);
+	new->pass = getpwuid(new->sb.st_uid);
+	new->grp = getgrgid(new->sb.st_gid);
 	new->next = NULL;
 	return (new);
 }
 
-void	ft_list_insert(t_file **begin_list, struct dirent *dp)
+void	ft_list_insert(t_file **begin_list, struct dirent *dp, t_data *data)
 {
 	t_file	*tmp;
 	t_file	*tmp2;
@@ -33,9 +41,9 @@ void	ft_list_insert(t_file **begin_list, struct dirent *dp)
 	tmp = *begin_list;
 	tmp2 = *begin_list;
 	if (*begin_list == NULL)
-		*begin_list = ft_create_elem(dp);
+		*begin_list = ft_create_elem(dp, data);
 	else if (ft_strcmp(dp->d_name, tmp->dp->d_name) <= 0)
-		ft_list_pushfront(begin_list, dp);
+		ft_list_pushfront(begin_list, dp, data);
 	else
 	{
 		while (tmp && ft_strcmp(dp->d_name, tmp->dp->d_name) > 0)
@@ -45,31 +53,31 @@ void	ft_list_insert(t_file **begin_list, struct dirent *dp)
 			tmp = tmp->next;
 		}
 		if (tmp == tmp2)
-			ft_list_pushback(begin_list, dp);
+			ft_list_pushback(begin_list, dp, data);
 		else
 		{
-			elem = ft_create_elem(dp);
+			elem = ft_create_elem(dp, data);
 			tmp2->next = elem;
 			elem->next = tmp;
 		}
 	}
 }
 
-void	ft_list_pushfront(t_file **begin_list, struct dirent *dp)
+void	ft_list_pushfront(t_file **begin_list, struct dirent *dp, t_data *data)
 {
 	t_file	*tmp;
 
 	if (*begin_list)
 	{
-		tmp = ft_create_elem(dp);
+		tmp = ft_create_elem(dp, data);
 		tmp->next = *begin_list;
 		*begin_list = tmp;
 	}
 	else
-		*begin_list = ft_create_elem(dp);
+		*begin_list = ft_create_elem(dp, data);
 }
 
-void	ft_list_pushback(t_file **begin_list, struct dirent *dp)
+void	ft_list_pushback(t_file **begin_list, struct dirent *dp, t_data *data)
 {
 	t_file	*tmp;
 
@@ -78,10 +86,10 @@ void	ft_list_pushback(t_file **begin_list, struct dirent *dp)
 		tmp = *begin_list;
 		while (tmp->next)
 			tmp = tmp->next;
-		tmp->next = ft_create_elem(dp);
+		tmp->next = ft_create_elem(dp, data);
 	}
 	else
-		*begin_list = ft_create_elem(dp);
+		*begin_list = ft_create_elem(dp, data);
 }
 
 int		list_size(t_file *list)
