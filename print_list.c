@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 21:54:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 15:57:39 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/23 17:28:02 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void print_list(t_file *list, char *comment)
 	printf("%s:\n", comment);
 	while (tmp)
 	{
-		if (tmp->dp->d_name[0] != '.')
+		if (tmp->filename[0] != '.')
 		{
-			printf("%s\t", tmp->dp->d_name);
+			printf("%s\t", tmp->filename);
 			if ((tmp->sb.st_mode & S_IFMT) == S_IFBLK)
 				printf("block device\n");
 			else if ((tmp->sb.st_mode & S_IFMT) == S_IFCHR)

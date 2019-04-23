@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 08:40:24 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 16:36:05 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/23 17:28:32 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	deleteif_list(t_file **list, t_data *data)
 	prev = *list;
 	while (cur)
 	{
-		if ((cur->sb.st_mode & S_IFMT) == S_IFDIR && cur->dp->d_name[0] != '.')
+		if ((cur->sb.st_mode & S_IFMT) == S_IFDIR && cur->filename[0] != '.')
 		{
 			prev->next = cur->next;
 			cur->next = NULL;

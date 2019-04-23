@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:13:06 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 15:58:14 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/23 17:20:15 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 
 typedef struct		s_file
 {
+	char 			*filename;
 	struct dirent   *dp;
 	struct stat     sb;
 	struct passwd   *pass;
