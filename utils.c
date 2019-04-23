@@ -6,7 +6,7 @@
 /*   by: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2019/04/14 21:07:00 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 08:49:20 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/23 15:33:47 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,22 @@ t_file	*ft_create_elem(struct dirent *dp, t_data *data)
 {
 	t_file	*new;
 	char	path_name[PATH_MAX];
+	int		len;
 
-	ft_strclr(path_name);
+	ft_bzero((void *)path_name, PATH_MAX);
 	ft_strcpy(path_name, data->dir.path);
 	ft_strcat(path_name, dp->d_name);
-	//	printf("pathelem= %s\n", path_name);
+	len = ft_strlen(path_name);
 	if (!(new = (t_file*)ft_memalloc(sizeof(t_file))))
 		return(NULL);
 	new->dp = dp;
 	stat(path_name, &new->sb);
+	path_name[len] = '/';
+	ft_strcpy(new->path, path_name);
 	new->pass = getpwuid(new->sb.st_uid);
 	new->grp = getgrgid(new->sb.st_gid);
 	new->next = NULL;
+	printf("name = %s\tpathelem= %s\n",dp->d_name , path_name);
 	return (new);
 }
 
@@ -81,6 +85,7 @@ void	ft_list_pushback(t_file **begin_list, struct dirent *dp, t_data *data)
 {
 	t_file	*tmp;
 
+	tmp = NULL;
 	if (*begin_list)
 	{
 		tmp = *begin_list;
@@ -114,7 +119,7 @@ void	free_list(t_file **begin_list)
 
 	tmp = *begin_list;
 	tmp2 = *begin_list;
-	if (*begin_list == NULL)
+	if (*begin_list != NULL)
 	{
 		while (tmp)
 		{

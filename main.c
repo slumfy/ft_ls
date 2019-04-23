@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 00:55:15 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 02:09:41 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/23 15:24:30 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		get_option(char **av, t_data *data)
 
 void	manage_arg(t_data *data)
 {
-	int len;
+	int		len;
 
 	len = strlen(data->dir.path);
 	if (data->dir.path[len - 1] != '/')
@@ -55,8 +55,12 @@ void	manage_arg(t_data *data)
 	data->dir.path[len + 1] = '\0';
 	len = strlen(data->dir.path);
 	printf ("path=%s\n", data->dir.path);
-	ft_ls(data);
-	free_list(&data->list);
+	ft_ls(data, data->dir.path);
+	while (data->dir_list)
+	{
+		ft_strcpy(data->dir.path, data->dir_list->path);
+		ft_ls(data, data->dir_list->path);
+	}
 }
 
 int		main(int ac, char **av)
@@ -69,7 +73,6 @@ int		main(int ac, char **av)
 	printf("opt= %d\n", data.fmt);
 	if (av[n] == NULL)
 	{
-		data.dir.curdir = opendir(".");
 		strcat(data.dir.path, ".");
 		manage_arg(&data);
 	}
@@ -77,7 +80,6 @@ int		main(int ac, char **av)
 	{
 		while (ac -1 >= n)
 		{
-			data.dir.curdir = opendir(av[ac -1]);
 			strcat(data.dir.path, av[ac -1]);
 			manage_arg(&data);
 			ac--;
