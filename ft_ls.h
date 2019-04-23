@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:13:06 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 14:19:21 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/23 15:58:14 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ t_file		*ft_create_elem(struct dirent *dp, t_data *data);
 void		free_list(t_file **list);
 void		deleteif_list(t_file **list, t_data *data);
 int			list_size(t_file *list);
-void		print_list(t_file *list);
+void		print_list(t_file *list, char *comment);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 15:29:26 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/23 15:59:28 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void ft_ls(t_data *data, char *current)
 		ft_list_insert(&data->list, file, data);
 	}
 	len = list_size(data->list);
-	print_list(data->list);
+	print_list(data->list, "file list");
 	deleteif_list(&data->list, data);
-	print_list(data->dir_list);
+	print_list(data->dir_list, "dir list");
 	free_list(&data->list);
 	closedir(data->dir.curdir);
 }

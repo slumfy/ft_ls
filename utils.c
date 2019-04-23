@@ -6,7 +6,7 @@
 /*   by: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2019/04/14 21:07:00 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 15:33:47 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/23 15:54:02 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_file	*ft_create_elem(struct dirent *dp, t_data *data)
 	new->pass = getpwuid(new->sb.st_uid);
 	new->grp = getgrgid(new->sb.st_gid);
 	new->next = NULL;
-	printf("name = %s\tpathelem= %s\n",dp->d_name , path_name);
+//	printf("name = %s\tpathelem= %s\n",dp->d_name , path_name);
 	return (new);
 }
 

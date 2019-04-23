@@ -6,18 +6,18 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 21:54:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/16 11:19:50 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/23 15:57:39 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void print_list(t_file *list)
+void print_list(t_file *list, char *comment)
 {
 	t_file *tmp;
 
 	tmp = list;
-	printf("list:\n");
+	printf("%s:\n", comment);
 	while (tmp)
 	{
 		if (tmp->dp->d_name[0] != '.')
@@ -39,7 +39,6 @@ void print_list(t_file *list)
 				printf("socket\n");
 			else
 				printf("unknown?\n");
-			printf("\n");
 		}
 		tmp = tmp->next;
 	}

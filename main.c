@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 00:55:15 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 15:24:30 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/23 15:55:34 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int		main(int ac, char **av)
 
 	ft_memset(&data, 0, sizeof(t_data));
 	n = get_option(av, &data);
-	printf("opt= %d\n", data.fmt);
 	if (av[n] == NULL)
 	{
 		strcat(data.dir.path, ".");
