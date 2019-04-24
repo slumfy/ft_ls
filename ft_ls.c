@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 16:36:08 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/24 17:42:24 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void ft_ls(t_data *data, char *current)
 	deleteif_list(&data->list, data);
 	print_list(data->dir_list, "dir list");
 	free_list(&data->list);
-//	closedir(data->dir.curdir);
+	closedir(data->dir.curdir);
 }
