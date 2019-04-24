@@ -6,13 +6,13 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 21:54:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 17:28:02 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/24 20:36:09 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void print_list(t_file *list, char *comment)
+void print_list(t_data *data, t_file *list, char *comment)
 {
 	t_file *tmp;
 
@@ -20,7 +20,7 @@ void print_list(t_file *list, char *comment)
 	printf("%s:\n", comment);
 	while (tmp)
 	{
-		if (tmp->filename[0] != '.')
+		if (tmp->filename[0] != '.' || data->fmt & OPT_a)
 		{
 			printf("%s\t", tmp->filename);
 			if ((tmp->sb.st_mode & S_IFMT) == S_IFBLK)

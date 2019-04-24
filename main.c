@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 00:55:15 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 17:25:31 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/04/24 20:34:53 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	manage_arg(t_data *data)
 	len = strlen(data->dir.path);
 	printf ("path=%s\n", data->dir.path);
 	ft_ls(data, data->dir.path);
-	while (data->dir_list)
+	while (data->dir_list && data->fmt & OPT_R)
 	{
 		ft_strcpy(data->dir.path, data->dir_list->path);
 		ft_ls(data, data->dir_list->path);
