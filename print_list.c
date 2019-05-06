@@ -12,18 +12,17 @@
 
 #include "ft_ls.h"
 
-void print_list(t_data *data, t_file *list, char *comment)
+void print_list(t_data *data, t_file *list)
 {
 	t_file *tmp;
 
 	tmp = list;
-	printf("%s:\n", comment);
 	while (tmp)
 	{
 		if (tmp->filename[0] != '.' || data->fmt & OPT_a)
 		{
-			printf("%s\t", tmp->filename);
-			if ((tmp->sb.st_mode & S_IFMT) == S_IFBLK)
+			printf("%s\n", tmp->filename);
+	/*		if ((tmp->sb.st_mode & S_IFMT) == S_IFBLK)
 				printf("block device\n");
 			else if ((tmp->sb.st_mode & S_IFMT) == S_IFCHR)
 				printf("character device\n");
@@ -38,9 +37,10 @@ void print_list(t_data *data, t_file *list, char *comment)
 			else if ((tmp->sb.st_mode & S_IFMT) == S_IFSOCK)
 				printf("socket\n");
 			else
-				printf("unknown?\n");
+				printf("unknown?\n");*/
 		}
 		tmp = tmp->next;
 	}
-	printf("\n");
+	if (data->fmt & OPT_R)
+		printf("\n");
 }

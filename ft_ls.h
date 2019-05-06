@@ -66,6 +66,6 @@ t_file		*ft_create_elem(struct dirent *dp, t_data *data);
 void		free_list(t_file **list);
 void		deleteif_list(t_file **list, t_data *data);
 int			list_size(t_file *list);
-void		print_list(t_data *data, t_file *list, char *comment);
+void		print_list(t_data *data, t_file *list);
 
 #endif

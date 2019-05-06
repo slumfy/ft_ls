@@ -54,11 +54,11 @@ void	manage_arg(t_data *data)
 		data->dir.path[len] = '/';
 	data->dir.path[len + 1] = '\0';
 	len = strlen(data->dir.path);
-	printf ("path=%s\n", data->dir.path);
 	ft_ls(data, data->dir.path);
 	while (data->dir_list && data->fmt & OPT_R)
 	{
 		ft_strcpy(data->dir.path, data->dir_list->path);
+		printf ("%s\n", data->dir.path);
 		ft_ls(data, data->dir_list->path);
 	}
 }

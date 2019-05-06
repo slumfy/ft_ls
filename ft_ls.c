@@ -25,14 +25,18 @@ void ft_ls(t_data *data, char *current)
 		data->dir_list = tmp;
 	}
 	tmp = data->list;
-	data->dir.curdir = opendir(current);
-	while ((file = readdir(data->dir.curdir)) != NULL)
+	if ((data->dir.curdir = opendir(current)))
 	{
-		ft_list_insert(&data->list, file, data);
+		while ((file = readdir(data->dir.curdir)) != NULL)
+		{
+			ft_list_insert(&data->list, file, data);
+		}
+		print_list(data, data->list);
+		if (data->fmt & OPT_R)
+			deleteif_list(&data->list, data);
+		free_list(&data->list);
+		closedir(data->dir.curdir);
 	}
-	print_list(data, data->list, "file list");
-	deleteif_list(&data->list, data);
-	print_list(data, data->dir_list, "dir list");
-	free_list(&data->list);
-	closedir(data->dir.curdir);
+	else
+	printf("ls:%s:%s\n",current , strerror(errno));
 }

@@ -32,7 +32,6 @@ t_file	*ft_create_elem(struct dirent *dp, t_data *data)
 	new->pass = getpwuid(new->sb.st_uid);
 	new->grp = getgrgid(new->sb.st_gid);
 	new->next = NULL;
-//	printf("name = %s\tpathelem= %s\n",dp->d_name , path_name);
 	return (new);
 }
 
@@ -47,7 +46,7 @@ void	ft_list_insert(t_file **begin_list, struct dirent *dp, t_data *data)
 	tmp2 = *begin_list;
 	if (*begin_list == NULL)
 		*begin_list = ft_create_elem(dp, data);
-	else if (ft_strcmp(dp->d_name, tmp->filename) <= 0)
+	else if (ft_strcmp(dp->d_name, tmp->filename) < 0)
 		ft_list_pushfront(begin_list, dp, data);
 	else
 	{
@@ -125,6 +124,7 @@ void	free_list(t_file **begin_list)
 		while (tmp)
 		{
 			tmp2 = tmp->next;
+			free(tmp->filename);
 			free(tmp);
 			tmp = tmp2;
 		}
