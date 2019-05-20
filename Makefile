@@ -15,6 +15,7 @@ SRC =	main.c\
 		ft_ls.c\
 		utils.c\
 		utils2.c\
+		rev_list.c\
 		print_list.c
 
 LIBFT = ./libft/

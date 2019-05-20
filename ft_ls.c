@@ -31,6 +31,8 @@ void ft_ls(t_data *data, char *current)
 		{
 			ft_list_insert(&data->list, file, data);
 		}
+		if (data->fmt & OPT_r)
+			rev_list(&data->list);
 		print_list(data, data->list);
 		if (data->fmt & OPT_R)
 			deleteif_list(&data->list, data);
