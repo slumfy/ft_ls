@@ -6,7 +6,7 @@
 /*   by: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   created: 2019/04/14 21:07:00 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/23 17:30:46 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/08/05 16:30:38 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,19 @@ void	ft_list_insert(t_file **begin_list, struct dirent *dp, t_data *data)
 	elem = NULL;
 	tmp = *begin_list;
 	tmp2 = *begin_list;
-	if (*begin_list == NULL)
-		*begin_list = ft_create_elem(dp, data);
-	else if (ft_strcmp(dp->d_name, tmp->filename) < 0)
+	if (*begin_list == NULL || ft_strcmp(dp->d_name, tmp->filename) < 0)
 		ft_list_pushfront(begin_list, dp, data);
 	else
 	{
 		while (tmp && ft_strcmp(dp->d_name, tmp->filename) > 0)
 		{
 			if (tmp2 != tmp)
-				tmp2 = tmp->next;
+				tmp2 = tmp2->next;
 			tmp = tmp->next;
 		}
 		if (tmp == tmp2)
-			ft_list_pushback(begin_list, dp, data);
+		{printf("dp-nqme %s\n" ,dp->d_name);
+			ft_list_pushback(begin_list, dp, data);}
 		else
 		{
 			elem = ft_create_elem(dp, data);
@@ -124,8 +123,8 @@ void	free_list(t_file **begin_list)
 		while (tmp)
 		{
 			tmp2 = tmp->next;
-			free(tmp->filename);
-			free(tmp);
+			ft_strdel(&(tmp->filename));
+		//			free(tmp);
 			tmp = tmp2;
 		}
 		*begin_list = NULL;

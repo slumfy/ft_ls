@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   opendir.c                                          :+:      :+:    :+:   */
+/*   ft_ls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/29 11:31:27 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/24 20:39:16 by rvalenti         ###   ########.fr       */
+/*   Created: 2019/08/05 15:30:41 by rvalenti          #+#    #+#             */
+/*   Updated: 2019/08/05 16:30:26 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void ft_ls(t_data *data, char *current)
 	if (data->fmt & OPT_R)
 	{
 		deleteif_list(&data->list, data);
-		print_list(data, data->dir_list);
 	}
 	free_list(&data->list);
 }

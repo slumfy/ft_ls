@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 00:55:15 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/04/24 20:34:53 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/08/05 15:50:08 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int		get_option(char **av, t_data *data)
 void	manage_arg(t_data *data)
 {
 	int		len;
+	char	path_name[PATH_MAX];
 
 	len = strlen(data->dir.path);
 	if (data->dir.path[len - 1] != '/')
@@ -58,7 +59,9 @@ void	manage_arg(t_data *data)
 	while (data->dir_list && data->fmt & OPT_R)
 	{
 		ft_strcpy(data->dir.path, data->dir_list->path);
-		printf ("%s\n", data->dir.path);
+		ft_strcpy(path_name, data->dir.path);
+		path_name[ft_strlen(path_name) - 1] = ':';
+		printf ("%s\n", path_name);
 		ft_ls(data, data->dir_list->path);
 	}
 }
