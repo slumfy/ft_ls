@@ -16,7 +16,8 @@ SRC =	main.c\
 		utils.c\
 		utils2.c\
 		rev_list.c\
-		print_list.c
+		print_list.c\
+		print_detail.c
 
 LIBFT = ./libft/
 CC = gcc -Wall -Werror -Wextra -fsanitize=address -g

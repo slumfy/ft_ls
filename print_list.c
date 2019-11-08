@@ -15,29 +15,29 @@
 void print_list(t_data *data, t_file *list)
 {
 	t_file *tmp;
+	unsigned long nlink;
 
+	nlink = 0;
+if (data->fmt & OPT_l)
+{
+	tmp = list;
+	while (tmp)
+{
+	nlink = nlink + tmp->sb.st_nlink;
+	tmp = tmp->next;
+}
+printf("total %ld\n", nlink);
+}
 	tmp = list;
 	while (tmp)
 	{
 		if (tmp->filename[0] != '.' || data->fmt & OPT_a)
 		{
+			if (data->fmt & OPT_l)
+			{
+				print_detail(data, tmp);
+			}
 			printf("%s\n", tmp->filename);
-	/*		if ((tmp->sb.st_mode & S_IFMT) == S_IFBLK)
-				printf("block device\n");
-			else if ((tmp->sb.st_mode & S_IFMT) == S_IFCHR)
-				printf("character device\n");
-			else if ((tmp->sb.st_mode & S_IFMT) == S_IFDIR)
-				printf("directory\n");
-			else if ((tmp->sb.st_mode & S_IFMT) == S_IFIFO)
-				printf("FIFO/pipe\n");
-			else if ((tmp->sb.st_mode & S_IFMT) == S_IFLNK)
-				printf("symlink\n");
-			else if ((tmp->sb.st_mode & S_IFMT) == S_IFREG)
-				printf("regular file\n");
-			else if ((tmp->sb.st_mode & S_IFMT) == S_IFSOCK)
-				printf("socket\n");
-			else
-				printf("unknown?\n");*/
 		}
 		tmp = tmp->next;
 	}
