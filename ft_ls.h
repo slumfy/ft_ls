@@ -68,5 +68,5 @@ void		deleteif_list(t_file **list, t_data *data);
 int			list_size(t_file *list);
 void		rev_list(t_file **list);
 void		print_list(t_data *data, t_file *list);
-void		print_detail(t_data *data, t_file *list);
+void		print_detail(t_data *data, t_file *list, int blocklen, int sizelen);
 #endif

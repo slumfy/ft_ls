@@ -15,19 +15,30 @@
 void print_list(t_data *data, t_file *list)
 {
 	t_file *tmp;
-	unsigned long nlink;
+	unsigned long nblock;
+	int linklen;
+	int sizelen;
 
-	nlink = 0;
-if (data->fmt & OPT_l)
+	nblock = 0;
+	linklen = 0;
+	sizelen = 0;
+	if (data->fmt & OPT_l)
+	{
+		tmp = list;
+		while (tmp)
+		{
+			if (tmp->filename[0] != '.' || data->fmt & OPT_a)
 {
-	tmp = list;
-	while (tmp)
-{
-	nlink = nlink + tmp->sb.st_nlink;
-	tmp = tmp->next;
+				if (ft_nbrlen(tmp->sb.st_nlink) > (size_t)linklen)
+					linklen = (int)ft_nbrlen(tmp->sb.st_nlink); 
+				if (ft_nbrlen(tmp->sb.st_size) > (size_t)sizelen)
+					sizelen = (int)ft_nbrlen(tmp->sb.st_size); 
+				nblock = nblock + tmp->sb.st_blocks;
 }
-printf("total %ld\n", nlink);
-}
+			tmp = tmp->next;
+		}
+		printf("total %ld\n", nblock);
+	}
 	tmp = list;
 	while (tmp)
 	{
@@ -35,7 +46,7 @@ printf("total %ld\n", nlink);
 		{
 			if (data->fmt & OPT_l)
 			{
-				print_detail(data, tmp);
+				print_detail(data, tmp, linklen, sizelen);
 			}
 			printf("%s\n", tmp->filename);
 		}
