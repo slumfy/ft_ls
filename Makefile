@@ -6,7 +6,7 @@
 #    By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 12:10:29 by rvalenti          #+#    #+#              #
-#    Updated: 2019/04/23 16:00:59 by rvalenti         ###   ########.fr        #
+#    Updated: 2019/11/18 15:40:09 by rvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJ)
 			make -C $(LIBFT)
 			$(CC) $(OBJ) -o$(NAME) -I$(LIBFT) -I$(INCLUDES) -L $(LIBFT) -lft
 
-%.o: %.c fdf.h
+%.o: %.c
 		$(CC) -c $< -o $@
 
 clean:
